@@ -83,97 +83,79 @@ function getAllData(city) {
 
         switch (desc) {
           case "Cloudy":
-            advice.textContent =
-              "It might feel a bit gloomy, but perfect weather for indoor activities.";
+            advice.textContent = "Gloomy day, ideal for indoor plans.";
             break;
 
           case "Partly Cloudy":
-            advice.textContent =
-              "Enjoy some sunshine, but keep a light jacket handy just in case.";
+            advice.textContent = "Some sun, bring a light jacket.";
             break;
 
           case "Rain":
-            advice.textContent =
-              "Don't forget your umbrella and waterproof shoes!";
+            advice.textContent = "Carry umbrella, wear waterproof shoes.";
             break;
 
           case "Light Rain":
-            advice.textContent =
-              "A light drizzle—consider a raincoat and keep outdoor plans flexible.";
+            advice.textContent = "Light rain, keep raincoat handy.";
             break;
 
           case "Heavy Rain":
-            advice.textContent =
-              "Heavy downpour expected. Stay indoors if possible and watch for slippery surfaces.";
+            advice.textContent = "Heavy rain, stay indoors, be cautious.";
             break;
 
           case "Sunny":
-            advice.textContent =
-              "A bright sunny day! Wear sunglasses and stay hydrated.";
+            advice.textContent = "Bright sun, wear sunglasses, hydrate.";
             break;
 
           case "Partly Sunny":
-            advice.textContent =
-              "Mix of sun and clouds—ideal for a stroll but sunscreen is advised.";
+            advice.textContent = "Sun and clouds, apply sunscreen.";
             break;
 
           case "Mainly Sunny":
-            advice.textContent =
-              "Mostly sunny and great weather for outdoor activities.";
+            advice.textContent = "Mostly sunny, enjoy outdoor activities.";
             break;
 
           case "Clear":
-            advice.textContent =
-              "Clear skies tonight—perfect for stargazing or a peaceful walk.";
+            advice.textContent = "Clear skies, perfect for stargazing.";
             break;
 
           case "Mainly Clear":
-            advice.textContent = "Calm and clear weather—enjoy the fresh air.";
+            advice.textContent = "Calm and clear, enjoy fresh air.";
             break;
 
           case "Foggy":
-            advice.textContent =
-              "Visibility is low—exercise caution while driving or walking.";
+            advice.textContent = "Low visibility, drive carefully.";
             break;
 
           case "Rime Fog":
-            advice.textContent =
-              "Frosty fog outside. Dress warmly and move carefully on icy paths.";
+            advice.textContent = "Frosty fog, dress warmly, move cautiously.";
             break;
 
           case "Drizzle":
-            advice.textContent =
-              "Light drizzle—consider waterproof footwear and a hooded jacket.";
+            advice.textContent = "Light drizzle, wear waterproof footwear.";
             break;
 
           case "Light Drizzle":
-            advice.textContent =
-              "A slight drizzle—carry a small umbrella just in case.";
+            advice.textContent = "Slight drizzle, take small umbrella.";
             break;
 
           case "Light Freezing Drizzle":
-            advice.textContent =
-              "Freezing drizzle may cause slippery roads. Be extra careful!";
+            advice.textContent = "Freezing drizzle, watch for ice.";
             break;
 
           case "Snow":
-            advice.textContent =
-              "Snowfall expected. Bundle up and watch for slippery surfaces.";
+            advice.textContent = "Snowfall, bundle up, beware slippery.";
             break;
 
           case "Showers":
-            advice.textContent =
-              "Intermittent rain showers—keep your umbrella handy throughout the day.";
+            advice.textContent = "Rain showers, keep umbrella available.";
             break;
 
           case "Thunderstorm":
-            advice.textContent =
-              "Thunderstorms ahead! Stay indoors and avoid open spaces.";
+            advice.textContent = "Thunderstorms, stay indoors, avoid open.";
             break;
 
           default:
-            advice.textContent =
-              "No specific advice for this weather condition.";
+            advice.textContent = "No specific advice for today.";
             break;
         }
       });
