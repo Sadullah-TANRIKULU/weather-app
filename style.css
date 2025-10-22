@@ -4,8 +4,13 @@
     padding: 0;
     box-sizing: border-box;
   }
+
   body {
     background-color: #a1e3f9;
+    background-image: url("./assets/fantastic.png");
+    background-size: cover;
+    width: 100%;
+    height: auto;
   }
 
   h1 {
@@ -16,6 +21,17 @@
     color: #0b3869;
   }
 
+  input {
+    /* border: none;
+    border-radius: 5px; */
+    font-size: 1.2rem;
+    border-radius: 8px;
+    padding: 0 0.5rem;
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
   .container {
     display: flex;
     justify-content: center;
@@ -24,9 +40,11 @@
     width: 40%;
     height: 400px;
     margin: 0 auto;
-    background-color: #578fca;
+    /* background-color: #578fca; */
+    background-color: #317dcd;
     border-radius: 25px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.65;
   }
 
   /* #location {
@@ -47,7 +65,7 @@
   /* border: 2px solid green; */
   margin: 1rem 1rem 0 0;
   color: white;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);
   font-weight: 600;
   font-size: 4rem;
 }
@@ -56,7 +74,7 @@
   /* border: 2px solid green; */
   margin: 1rem 1rem 0 0;
   color: white;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);
   font-weight: 600;
   font-size: 2.2rem;
 }
@@ -75,16 +93,19 @@
   /* border: 2px solid green; */
   margin: 0 1rem 0 0;
   color: white;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
-  font-weight: 600;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 200;
   font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #user-advice {
   /* border: 2px solid green; */
   margin: 1rem 1rem 0 0;
   color: white;
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
-  font-weight: 600;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 1);
+  font-weight: 200;
+
   font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
 }

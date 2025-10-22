@@ -1,4 +1,3 @@
-
 const searchCity = document.getElementById("search-city");
 const button = document.getElementById("btn");
 const cityName = document.getElementById("city-name");
@@ -37,7 +36,6 @@ async function fetchData(url) {
   }
 }
 
-
 async function getGeolocation(city = "Bern") {
   const dt = await fetchData(
     `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`
@@ -65,7 +63,6 @@ function getAllData(city) {
 
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${data.latitude}&longitude=${data.longitude}&current=temperature_2m%2Crelative_humidity_2m%2Crain%2Cweather_code`;
 
-
     const weatherAPIData = fetchData(url);
     weatherAPIData.then((data) => {
       console.log(data);
@@ -77,75 +74,106 @@ function getAllData(city) {
         console.log(data[weather_code].day.image);
         console.log(weather_code);
 
-
         desc = data[weather_code].day.description;
         img = data[weather_code].day.image;
 
-        display.innerHTML = `${temperature}`;
+        display.innerHTML = `${temperature} ºC`;
         weatherImage.innerHTML = `<img src="${img}" >`;
         weatherDescription.innerHTML = ` ${desc} `;
 
-
         switch (desc) {
           case "Cloudy":
-            advice.textContent = "some advice";
+            advice.textContent =
+              "It might feel a bit gloomy, but perfect weather for indoor activities.";
             break;
 
           case "Partly Cloudy":
-            advice.textContent = "some advice";
+            advice.textContent =
+              "Enjoy some sunshine, but keep a light jacket handy just in case.";
             break;
-          case "Rain":
-            advice.textContent = "some advice";
-            break;
-          case "Light Rain":
-            advice.textContent = "some advice";
-            break;
-          case "Heavy Rain":
-            advice.textContent = "some advice";
-            break;
-          case "Sunny":
-            advice.textContent = "some advice";
-            break;
-          case "Partly Sunny":
-            advice.textContent = "some advice";
-            break;
-          case "Mainly Sunny":
-            advice.textContent = "some advice";
-            break;
-          case "Clear":
-            advice.textContent = "some advice";
-            break;
-          case "Mainly Clear":
-            advice.textContent = "some advice";
-            break;
-          case "Foggy":
-            advice.textContent = "some advice";
-            break;
-          case "Rime Fog":
-            advice.textContent = "some advice";
-            break;
-          case "Drizzle":
-            advice.textContent = "some advice";
-            break;
-          case "Light Drizzle":
-            advice.textContent = "some advice";
-            break;
-          case "Light Freezing Drizzle":
-            advice.textContent = "some advice";
-            break;
-          case "Snow":
-            advice.textContent = "some advice";
-            break;
-          case "Showers":
-            advice.textContent = "some advice";
-            break;
-          case "Thunderstorm":
 
-            advice.textContent = "some advice";
+          case "Rain":
+            advice.textContent =
+              "Don't forget your umbrella and waterproof shoes!";
             break;
-          
+
+          case "Light Rain":
+            advice.textContent =
+              "A light drizzle—consider a raincoat and keep outdoor plans flexible.";
+            break;
+
+          case "Heavy Rain":
+            advice.textContent =
+              "Heavy downpour expected. Stay indoors if possible and watch for slippery surfaces.";
+            break;
+
+          case "Sunny":
+            advice.textContent =
+              "A bright sunny day! Wear sunglasses and stay hydrated.";
+            break;
+
+          case "Partly Sunny":
+            advice.textContent =
+              "Mix of sun and clouds—ideal for a stroll but sunscreen is advised.";
+            break;
+
+          case "Mainly Sunny":
+            advice.textContent =
+              "Mostly sunny and great weather for outdoor activities.";
+            break;
+
+          case "Clear":
+            advice.textContent =
+              "Clear skies tonight—perfect for stargazing or a peaceful walk.";
+            break;
+
+          case "Mainly Clear":
+            advice.textContent = "Calm and clear weather—enjoy the fresh air.";
+            break;
+
+          case "Foggy":
+            advice.textContent =
+              "Visibility is low—exercise caution while driving or walking.";
+            break;
+
+          case "Rime Fog":
+            advice.textContent =
+              "Frosty fog outside. Dress warmly and move carefully on icy paths.";
+            break;
+
+          case "Drizzle":
+            advice.textContent =
+              "Light drizzle—consider waterproof footwear and a hooded jacket.";
+            break;
+
+          case "Light Drizzle":
+            advice.textContent =
+              "A slight drizzle—carry a small umbrella just in case.";
+            break;
+
+          case "Light Freezing Drizzle":
+            advice.textContent =
+              "Freezing drizzle may cause slippery roads. Be extra careful!";
+            break;
+
+          case "Snow":
+            advice.textContent =
+              "Snowfall expected. Bundle up and watch for slippery surfaces.";
+            break;
+
+          case "Showers":
+            advice.textContent =
+              "Intermittent rain showers—keep your umbrella handy throughout the day.";
+            break;
+
+          case "Thunderstorm":
+            advice.textContent =
+              "Thunderstorms ahead! Stay indoors and avoid open spaces.";
+            break;
+
           default:
-            advice.textContent = "no advice right now";
+            advice.textContent =
+              "No specific advice for this weather condition.";
             break;
         }
       });
@@ -163,4 +191,3 @@ searchCity.addEventListener("keydown", (e) => {
 });
 
 getAllData("Bern");
-
