@@ -46,7 +46,6 @@ async function getGeolocation(city = "Bern") {
     longitude: dt.results[0]["longitude"],
     city: dt.results[0]["name"],
   };
-  console.log(locations);
 
   return locations;
 }
@@ -56,24 +55,16 @@ function getAllData(city) {
   let temperature = 0;
   const locations = getGeolocation(city);
   locations.then((data) => {
-    console.log(data);
-
-    //we get here just latitude and longitude
     cityName.innerText = data.city;
 
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${data.latitude}&longitude=${data.longitude}&current=temperature_2m%2Crelative_humidity_2m%2Crain%2Cweather_code`;
 
     const weatherAPIData = fetchData(url);
     weatherAPIData.then((data) => {
-      console.log(data);
-
       temperature = data.current.temperature_2m;
       weather_code = data.current.weather_code;
       const weatherCodes = fetchData("./weather-codes.json");
       weatherCodes.then((data) => {
-        console.log(data[weather_code].day.image);
-        console.log(weather_code);
-
         desc = data[weather_code].day.description;
         img = data[weather_code].day.image;
 
@@ -104,14 +95,20 @@ function getAllData(city) {
 
           case "Sunny":
             advice.textContent = "Bright sun, wear sunglasses, hydrate.";
+            document.body.style.backgroundImage =
+              "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
             break;
 
           case "Partly Sunny":
             advice.textContent = "Sun and clouds, apply sunscreen.";
+           document.body.style.backgroundImage =
+              "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
             break;
 
           case "Mainly Sunny":
             advice.textContent = "Mostly sunny, enjoy outdoor activities.";
+            document.body.style.backgroundImage =
+              "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
             break;
 
           case "Clear":
@@ -136,6 +133,7 @@ function getAllData(city) {
 
           case "Light Drizzle":
             advice.textContent = "Slight drizzle, take small umbrella.";
+
             break;
 
           case "Light Freezing Drizzle":
@@ -168,7 +166,6 @@ searchCity.addEventListener("keydown", (e) => {
     e.preventDefault();
 
     getAllData(searchCity.value);
-    console.log("enter pressed");
   }
 });
 
