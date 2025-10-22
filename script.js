@@ -9,18 +9,6 @@ const now = document.getElementById("now");
 
 now.innerText = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`;
 
-const advices = {
-  Cloudy: "some advice",
-  Rain: "some advice",
-  Sunny: "some advice",
-  Clear: "some advice",
-  Foggy: "some advice",
-  Drizzle: "some advice",
-  Snow: "some advice",
-  Showers: "some advice",
-  Thunderstorm: "some advice",
-};
-
 async function fetchData(url) {
   try {
     const response = await fetch(url);
@@ -101,7 +89,7 @@ function getAllData(city) {
 
           case "Partly Sunny":
             advice.textContent = "Sun and clouds, apply sunscreen.";
-           document.body.style.backgroundImage =
+            document.body.style.backgroundImage =
               "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
             break;
 
@@ -169,4 +157,4 @@ searchCity.addEventListener("keydown", (e) => {
   }
 });
 
-getAllData("Bern");
+getAllData();
