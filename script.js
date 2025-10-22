@@ -1,3 +1,4 @@
+
 const searchCity = document.getElementById("search-city");
 const button = document.getElementById("btn");
 const cityName = document.getElementById("city-name");
@@ -21,9 +22,6 @@ const advices = {
   Thunderstorm: "some advice",
 };
 
-// weather-image
-// weather-description
-
 async function fetchData(url) {
   try {
     const response = await fetch(url);
@@ -38,6 +36,7 @@ async function fetchData(url) {
     throw error;
   }
 }
+
 
 async function getGeolocation(city = "Bern") {
   const dt = await fetchData(
@@ -66,6 +65,7 @@ function getAllData(city) {
 
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${data.latitude}&longitude=${data.longitude}&current=temperature_2m%2Crelative_humidity_2m%2Crain%2Cweather_code`;
 
+
     const weatherAPIData = fetchData(url);
     weatherAPIData.then((data) => {
       console.log(data);
@@ -77,6 +77,7 @@ function getAllData(city) {
         console.log(data[weather_code].day.image);
         console.log(weather_code);
 
+
         desc = data[weather_code].day.description;
         img = data[weather_code].day.image;
 
@@ -84,10 +85,12 @@ function getAllData(city) {
         weatherImage.innerHTML = `<img src="${img}" >`;
         weatherDescription.innerHTML = ` ${desc} `;
 
+
         switch (desc) {
           case "Cloudy":
             advice.textContent = "some advice";
             break;
+
           case "Partly Cloudy":
             advice.textContent = "some advice";
             break;
@@ -137,9 +140,10 @@ function getAllData(city) {
             advice.textContent = "some advice";
             break;
           case "Thunderstorm":
+
             advice.textContent = "some advice";
             break;
-
+          
           default:
             advice.textContent = "no advice right now";
             break;
@@ -159,3 +163,4 @@ searchCity.addEventListener("keydown", (e) => {
 });
 
 getAllData("Bern");
+
