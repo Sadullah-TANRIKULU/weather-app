@@ -1,3 +1,5 @@
+import weatherCodesData from "./weather-codes.js";
+
 const searchCity = document.getElementById("search-city");
 const button = document.getElementById("btn");
 const cityName = document.getElementById("city-name");
@@ -7,7 +9,9 @@ const weatherDescription = document.getElementById("weather-description");
 const advice = document.getElementById("user-advice");
 const now = document.getElementById("now");
 
-now.innerText = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`;
+now.innerText = `${new Date().getDate()}.${
+  new Date().getMonth() + 1
+}.${new Date().getFullYear()}`;
 
 async function fetchData(url) {
   try {
@@ -51,100 +55,99 @@ function getAllData(city) {
     weatherAPIData.then((data) => {
       temperature = data.current.temperature_2m;
       weather_code = data.current.weather_code;
-      const weatherCodes = fetchData("./weather-codes.json");
-      weatherCodes.then((data) => {
-        desc = data[weather_code].day.description;
-        img = data[weather_code].day.image;
+      const weatherCodes = weatherCodesData;
 
-        display.innerHTML = `${temperature} ºC`;
-        weatherImage.innerHTML = `<img src="${img}" >`;
-        weatherDescription.innerHTML = ` ${desc} `;
+      let desc = weatherCodesData[weather_code].day.description;
+      let img = weatherCodesData[weather_code].day.image;
 
-        switch (desc) {
-          case "Cloudy":
-            advice.textContent = "Gloomy day, ideal for indoor plans.";
-            break;
+      display.innerHTML = `${temperature} ºC`;
+      weatherImage.innerHTML = `<img src="${img}" >`;
+      weatherDescription.innerHTML = ` ${desc} `;
 
-          case "Partly Cloudy":
-            advice.textContent = "Some sun, bring a light jacket.";
-            break;
+      switch (desc) {
+        case "Cloudy":
+          advice.textContent = "Gloomy day, ideal for indoor plans.";
+          break;
 
-          case "Rain":
-            advice.textContent = "Carry umbrella, wear waterproof shoes.";
-            break;
+        case "Partly Cloudy":
+          advice.textContent = "Some sun, bring a light jacket.";
+          break;
 
-          case "Light Rain":
-            advice.textContent = "Light rain, keep raincoat handy.";
-            break;
+        case "Rain":
+          advice.textContent = "Carry umbrella, wear waterproof shoes.";
+          break;
 
-          case "Heavy Rain":
-            advice.textContent = "Heavy rain, stay indoors, be cautious.";
-            break;
+        case "Light Rain":
+          advice.textContent = "Light rain, keep raincoat handy.";
+          break;
 
-          case "Sunny":
-            advice.textContent = "Bright sun, wear sunglasses, hydrate.";
-            document.body.style.backgroundImage =
-              "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
-            break;
+        case "Heavy Rain":
+          advice.textContent = "Heavy rain, stay indoors, be cautious.";
+          break;
 
-          case "Partly Sunny":
-            advice.textContent = "Sun and clouds, apply sunscreen.";
-            document.body.style.backgroundImage =
-              "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
-            break;
+        case "Sunny":
+          advice.textContent = "Bright sun, wear sunglasses, hydrate.";
+          document.body.style.backgroundImage =
+            "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
+          break;
 
-          case "Mainly Sunny":
-            advice.textContent = "Mostly sunny, enjoy outdoor activities.";
-            document.body.style.backgroundImage =
-              "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
-            break;
+        case "Partly Sunny":
+          advice.textContent = "Sun and clouds, apply sunscreen.";
+          document.body.style.backgroundImage =
+            "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
+          break;
 
-          case "Clear":
-            advice.textContent = "Clear skies, perfect for stargazing.";
-            break;
+        case "Mainly Sunny":
+          advice.textContent = "Mostly sunny, enjoy outdoor activities.";
+          document.body.style.backgroundImage =
+            "url('https://www.bpmcdn.com/f/files/similkameen/import/2019-04/16560263_web1_180604_KCN_weather-update.jpg;w=900')";
+          break;
 
-          case "Mainly Clear":
-            advice.textContent = "Calm and clear, enjoy fresh air.";
-            break;
+        case "Clear":
+          advice.textContent = "Clear skies, perfect for stargazing.";
+          break;
 
-          case "Foggy":
-            advice.textContent = "Low visibility, drive carefully.";
-            break;
+        case "Mainly Clear":
+          advice.textContent = "Calm and clear, enjoy fresh air.";
+          break;
 
-          case "Rime Fog":
-            advice.textContent = "Frosty fog, dress warmly, move cautiously.";
-            break;
+        case "Foggy":
+          advice.textContent = "Low visibility, drive carefully.";
+          break;
 
-          case "Drizzle":
-            advice.textContent = "Light drizzle, wear waterproof footwear.";
-            break;
+        case "Rime Fog":
+          advice.textContent = "Frosty fog, dress warmly, move cautiously.";
+          break;
 
-          case "Light Drizzle":
-            advice.textContent = "Slight drizzle, take small umbrella.";
+        case "Drizzle":
+          advice.textContent = "Light drizzle, wear waterproof footwear.";
+          break;
 
-            break;
+        case "Light Drizzle":
+          advice.textContent = "Slight drizzle, take small umbrella.";
 
-          case "Light Freezing Drizzle":
-            advice.textContent = "Freezing drizzle, watch for ice.";
-            break;
+          break;
 
-          case "Snow":
-            advice.textContent = "Snowfall, bundle up, beware slippery.";
-            break;
+        case "Light Freezing Drizzle":
+          advice.textContent = "Freezing drizzle, watch for ice.";
+          break;
 
-          case "Showers":
-            advice.textContent = "Rain showers, keep umbrella available.";
-            break;
+        case "Snow":
+          advice.textContent = "Snowfall, bundle up, beware slippery.";
+          break;
 
-          case "Thunderstorm":
-            advice.textContent = "Thunderstorms, stay indoors, avoid open.";
-            break;
+        case "Showers":
+          advice.textContent = "Rain showers, keep umbrella available.";
+          break;
 
-          default:
-            advice.textContent = "No specific advice for today.";
-            break;
-        }
-      });
+        case "Thunderstorm":
+          advice.textContent = "Thunderstorms, stay indoors, avoid open.";
+          break;
+
+        default:
+          advice.textContent = "No specific advice for today.";
+          break;
+      }
     });
   });
 }
@@ -157,4 +160,4 @@ searchCity.addEventListener("keydown", (e) => {
   }
 });
 
-getAllData();
+getAllData("Bern");
